@@ -74,42 +74,256 @@ export default function BookingForm({ initialVehicles }) {
   const round = f.tripType === "round-trip";
   const local = f.tripType === "local";
 
-  return (
-    <form onSubmit={(e) => e.preventDefault()} noValidate aria-label="Cab booking form" className="rounded-card bg-white p-5 shadow-card sm:p-6">
-      <h2 className="font-heading text-lg font-semibold">Book your ride</h2>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <Select id="tripType" label="Trip type" value={f.tripType} onChange={set("tripType")} options={TRIP_TYPES} error={errors.tripType} />
-        <PlaceInput id="pickup" label="Pickup location" placeholder="e.g. Indore Airport" value={f.pickup} onChange={set("pickup")} error={errors.pickup} />
-        {!local && <PlaceInput id="drop" label="Drop location" placeholder="e.g. Ujjain" value={f.drop} onChange={set("drop")} error={errors.drop} />}
-        <Input id="date" type="date" min={today} label="Pickup date" value={f.date} onChange={set("date")} error={errors.date} />
-        <Input id="time" type="time" label="Pickup time" value={f.time} onChange={set("time")} error={errors.time} />
-        {round && <Input id="returnDate" type="date" min={f.date || today} label="Return date" value={f.returnDate} onChange={set("returnDate")} error={errors.returnDate} />}
-        <Input id="passengers" type="number" min="1" max="20" label="Passengers" value={f.passengers} onChange={set("passengers")} error={errors.passengers} />
-        <Select id="vehicle" label="Vehicle" placeholder={vehicles.loading ? "Loading vehicles…" : "Select vehicle"} value={f.vehicle} onChange={set("vehicle")}
-          options={vehicles.list.map((v) => ({ value: v._id, label: v.name }))} error={errors.vehicle} />
-        <Input id="name" label="Your name" autoComplete="name" value={f.name} onChange={set("name")} error={errors.name} />
-        <Input id="coupon" label="Coupon code (optional)" value={f.coupon} onChange={set("coupon")} />
-        <Input id="mobile" type="tel" inputMode="numeric" label="Mobile number" autoComplete="tel" placeholder="10-digit number" value={f.mobile} onChange={set("mobile")} error={errors.mobile} />
+ 
+return (
+  <form
+    onSubmit={(e) => e.preventDefault()}
+    noValidate
+    aria-label="Cab booking form"
+    className="w-full min-w-0 overflow-visible rounded-card bg-white p-4 shadow-card sm:p-6 lg:p-7"
+  >
+    {/* Form Header */}
+    <div className="mb-5">
+      <h2 className="font-heading text-lg font-semibold text-gray-900 sm:text-xl">
+        Book your ride
+      </h2>
+      <p className="mt-1 text-sm text-gray-500">
+        Enter your trip details to book your cab.
+      </p>
+    </div>
+
+    {/* Booking Fields */}
+    <div className="grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+      {/* Trip Type */}
+      <div className="min-w-0">
+        <Select
+          id="tripType"
+          label="Trip type"
+          value={f.tripType}
+          onChange={set("tripType")}
+          options={TRIP_TYPES}
+          error={errors.tripType}
+        />
       </div>
 
-      {vehicles.error && <div className="mt-4"><ErrorState message={vehicles.error} /></div>}
+      {/* Pickup */}
+      <div className="min-w-0">
+        <PlaceInput
+          id="pickup"
+          label="Pickup location"
+          placeholder="e.g. Indore Airport"
+          value={f.pickup}
+          onChange={set("pickup")}
+          error={errors.pickup}
+        />
+      </div>
 
-      {estimate.data && (
-        <div className="mt-4 rounded-lg bg-muted p-4" aria-live="polite">
-          <p className="text-sm text-ink-soft">Estimated fare</p>
-          <p className="font-heading text-2xl font-semibold text-navy-900">₹{Number(estimate.data.total).toLocaleString("en-IN")}</p>
-          <p className="mt-1 text-xs text-ink-soft">{(estimate.data.notes || []).join(" ")}</p>
+      {/* Drop */}
+      {!local && (
+        <div className="min-w-0">
+          <PlaceInput
+            id="drop"
+            label="Drop location"
+            placeholder="e.g. Ujjain"
+            value={f.drop}
+            onChange={set("drop")}
+            error={errors.drop}
+          />
         </div>
       )}
-      {estimate.error && <div className="mt-4"><ErrorState message={estimate.error} /></div>}
 
-      {booking.error && <div className="mt-4"><ErrorState message={booking.error} /></div>}
-
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-        <Button type="button" variant="outline" onClick={getEstimate} loading={estimate.loading} className="sm:flex-1"><Calculator className="h-4 w-4" aria-hidden />Get fare estimate</Button>
-        <Button type="button" onClick={confirmBooking} loading={booking.loading} className="sm:flex-1"><CheckCircle2 className="h-4 w-4" aria-hidden />Confirm booking</Button>
-        <Button type="button" variant="dark" onClick={sendWhatsApp} className="sm:flex-1"><MessageCircle className="h-4 w-4" aria-hidden />WhatsApp</Button>
+      {/* Pickup Date */}
+      <div className="min-w-0">
+        <Input
+          id="date"
+          type="date"
+          min={today}
+          label="Pickup date"
+          value={f.date}
+          onChange={set("date")}
+          error={errors.date}
+        />
       </div>
-    </form>
-  );
+
+      {/* Pickup Time */}
+      <div className="min-w-0">
+        <Input
+          id="time"
+          type="time"
+          label="Pickup time"
+          value={f.time}
+          onChange={set("time")}
+          error={errors.time}
+        />
+      </div>
+
+      {/* Return Date */}
+      {round && (
+        <div className="min-w-0">
+          <Input
+            id="returnDate"
+            type="date"
+            min={f.date || today}
+            label="Return date"
+            value={f.returnDate}
+            onChange={set("returnDate")}
+            error={errors.returnDate}
+          />
+        </div>
+      )}
+
+      {/* Passengers */}
+      <div className="min-w-0">
+        <Input
+          id="passengers"
+          type="number"
+          min="1"
+          max="20"
+          label="Passengers"
+          value={f.passengers}
+          onChange={set("passengers")}
+          error={errors.passengers}
+        />
+      </div>
+
+      {/* Vehicle */}
+      <div className="min-w-0">
+        <Select
+          id="vehicle"
+          label="Vehicle"
+          placeholder={
+            vehicles.loading
+              ? "Loading vehicles…"
+              : "Select vehicle"
+          }
+          value={f.vehicle}
+          onChange={set("vehicle")}
+          options={vehicles.list.map((v) => ({
+            value: v._id,
+            label: v.name,
+          }))}
+          error={errors.vehicle}
+        />
+      </div>
+
+      {/* Customer Name */}
+      <div className="min-w-0">
+        <Input
+          id="name"
+          label="Your name"
+          autoComplete="name"
+          value={f.name}
+          onChange={set("name")}
+          error={errors.name}
+        />
+      </div>
+
+      {/* Coupon */}
+      <div className="min-w-0">
+        <Input
+          id="coupon"
+          label="Coupon code (optional)"
+          value={f.coupon}
+          onChange={set("coupon")}
+        />
+      </div>
+
+      {/* Mobile */}
+      <div className="min-w-0">
+        <Input
+          id="mobile"
+          type="tel"
+          inputMode="numeric"
+          label="Mobile number"
+          autoComplete="tel"
+          placeholder="10-digit number"
+          value={f.mobile}
+          onChange={set("mobile")}
+          error={errors.mobile}
+        />
+      </div>
+
+    </div>
+
+    {/* Vehicle Loading Error */}
+    {vehicles.error && (
+      <div className="mt-4">
+        <ErrorState message={vehicles.error} />
+      </div>
+    )}
+
+    {/* Fare Estimate */}
+    {estimate.data && (
+      <div
+        className="mt-5 rounded-xl border border-gray-200 bg-gray-50 p-4 sm:p-5"
+        aria-live="polite"
+      >
+        <p className="text-sm text-gray-500">
+          Estimated fare
+        </p>
+
+        <p className="mt-1 font-heading text-2xl font-bold text-navy-900 sm:text-3xl">
+          ₹{Number(estimate.data.total).toLocaleString("en-IN")}
+        </p>
+
+        {estimate.data.notes?.length > 0 && (
+          <p className="mt-2 text-xs leading-relaxed text-gray-500">
+            {estimate.data.notes.join(" ")}
+          </p>
+        )}
+      </div>
+    )}
+
+    {/* Estimate Error */}
+    {estimate.error && (
+      <div className="mt-4">
+        <ErrorState message={estimate.error} />
+      </div>
+    )}
+
+    {/* Booking Error */}
+    {booking.error && (
+      <div className="mt-4">
+        <ErrorState message={booking.error} />
+      </div>
+    )}
+
+    {/* Action Buttons */}
+    <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+      <Button
+        type="button"
+        variant="outline"
+        onClick={getEstimate}
+        loading={estimate.loading}
+        className="w-full justify-center"
+      >
+        <Calculator className="h-4 w-4" aria-hidden />
+        Get fare estimate
+      </Button>
+
+      <Button
+        type="button"
+        onClick={confirmBooking}
+        loading={booking.loading}
+        className="w-full justify-center"
+      >
+        <CheckCircle2 className="h-4 w-4" aria-hidden />
+        Confirm booking
+      </Button>
+
+      <Button
+        type="button"
+        variant="dark"
+        onClick={sendWhatsApp}
+        className="w-full justify-center sm:col-span-2 lg:col-span-1"
+      >
+        <MessageCircle className="h-4 w-4" aria-hidden />
+        WhatsApp
+      </Button>
+
+    </div>
+  </form>
+);
 }

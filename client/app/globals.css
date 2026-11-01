@@ -18,3 +18,20 @@
   html { scroll-behavior: auto; }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+
+input[type="text"],
+input[type="search"],
+input:not([type]) {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  caret-color: #111827 !important;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+input::placeholder {
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
+  opacity: 1 !important;
+}

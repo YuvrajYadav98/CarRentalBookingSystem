@@ -1,16 +1,16 @@
 // Business details come from env now; Phase 7 moves them to the Settings API.
 // Defaults are the owner-provided details; override via .env.local. TODO: confirm full address and WhatsApp number.
-const phone = process.env.NEXT_PUBLIC_PHONE || "+917610773501";
-const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP || "917610773501";
+const phone = process.env.NEXT_PUBLIC_PHONE || "+919755002719";
+const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP || "919755002719";
 
 export const site = {
-  name: process.env.NEXT_PUBLIC_COMPANY_NAME || "Sanwariyatourandtravels1",
+  name: process.env.NEXT_PUBLIC_COMPANY_NAME || "Sanwariya tour and travels",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   phone,
   telHref: `tel:${phone}`,
   whatsapp,
   email: process.env.NEXT_PUBLIC_EMAIL || "Sanwariyatourandtravels1@gmail.com",
-  address: process.env.NEXT_PUBLIC_ADDRESS || "Indore, Madhya Pradesh",
+  address: process.env.NEXT_PUBLIC_ADDRESS || "Vijay Nagar,Indore, Madhya Pradesh",
   social: [], // add { label, href } entries when real profiles exist
 };
 

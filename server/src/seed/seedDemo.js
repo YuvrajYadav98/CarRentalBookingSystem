@@ -28,7 +28,7 @@ const known = { "indore-to-ujjain": [55, "~1.5 hrs"], "indore-to-omkareshwar": [
     }
     const st = await Settings.get();
     if (!st.company?.name) { // owner-provided details; address and WhatsApp still to be confirmed
-      st.company = { name: "Sanwariyatourandtravels1", phone: "+917610773501", whatsapp: "917610773501", email: "Sanwariyatourandtravels1@gmail.com", address: "Indore, Madhya Pradesh" };
+      st.company = { name: "Sanwariyatourandtravels", phone: "+919755002719", whatsapp: "919755002719", email: "Sanwariyatourandtravels1@gmail.com", address: "Vijay Nagar,Indore, Madhya Pradesh" };
       await st.save();
     }
     console.log(`Seeded ${catalog.vehicles.length} vehicles and ${catalog.packages.length} packages (demo).`);
