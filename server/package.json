@@ -1,0 +1,30 @@
+{
+  "name": "cabs-server",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "seed:admin": "node src/seed/createAdmin.js",
+    "seed:demo": "node src/seed/seedDemo.js",
+    "test": "node --test test/fare.test.js test/payments.test.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.11.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.0",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.3.1",
+    "pdfkit": "^0.20.2",
+    "razorpay": "^2.9.8",
+    "zod": "^3.23.8"
+  }
+}

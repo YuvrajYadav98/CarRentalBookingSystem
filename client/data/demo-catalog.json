@@ -1,0 +1,22 @@
+{
+  "_notice": "DEMO DATA ONLY. Prices/capacities are taken from the reference website's public listing and are NOT verified quotations. Replace via Admin dashboard before launch.",
+  "vehicles": [
+    {"name":"Swift Dzire","pricePerKm":11,"seats":4},
+    {"name":"Maruti Ertiga","pricePerKm":13,"seats":6},
+    {"name":"Ciaz","pricePerKm":12,"seats":4},
+    {"name":"Toyota Innova Crysta","pricePerKm":18,"seats":7},
+    {"name":"Fortuner","pricePerKm":50,"seats":6},
+    {"name":"Toyota Innova Hycross","pricePerKm":20,"seats":7}
+  ],
+  "packages": [
+    {"name":"Airport Taxi","price":1850},
+    {"name":"Indore to Ujjain","price":2750},
+    {"name":"Indore to Omkareshwar","price":2750},
+    {"name":"Indore to Maheshwar","price":2750},
+    {"name":"Indore to Mandu","price":2750},
+    {"name":"Indore to Bhopal","price":4000},
+    {"name":"Indore Local Sightseeing","price":2250},
+    {"name":"Indore to Patalpani","price":2250},
+    {"name":"Indore to Baglamukhi","price":3500}
+  ]
+}
