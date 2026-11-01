@@ -11,8 +11,18 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["500", "600", "700"], var
 
 export const metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `Cab Service in Indore | Taxi, Airport & Outstation | ${site.name}`, template: `%s | ${site.name}` },
+
+  verification: {
+    google: "uDrwPWMhmVnXwemn9maQ9Z8Ly7BWTnsBA_8FIElzxhc",
+  },
+
+  title: {
+    default: `Cab Service in Indore | Taxi, Airport & Outstation | ${site.name}`,
+    template: `%s | ${site.name}`,
+  },
+
   description: "Book reliable cabs in Indore: airport taxi, local rentals and outstation trips to Ujjain, Omkareshwar, Maheshwar and more. Clean cars, experienced drivers.",
+
   openGraph: { type: "website", locale: "en_IN", siteName: site.name },
   twitter: { card: "summary" },
   alternates: { canonical: "/" },
