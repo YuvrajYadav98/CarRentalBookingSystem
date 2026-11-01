@@ -5,7 +5,7 @@ const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP || "919755002719";
 
 export const site = {
   name: process.env.NEXT_PUBLIC_COMPANY_NAME || "Sanwariya tour and travels",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://sanwariyatourtravels.com",
   phone,
   telHref: `tel:${phone}`,
   whatsapp,

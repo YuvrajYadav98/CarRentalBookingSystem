@@ -1,5 +1,7 @@
 // Browser: same-origin /api (proxied). Server components: backend URL directly.
-const BASE = typeof window === "undefined" ? `${process.env.API_ORIGIN || "http://localhost:5000"}/api` : "/api";
+const BASE = typeof window === "undefined"
+  ? `${process.env.API_ORIGIN || "https://api.sanwariyatourtravels.com"}/api`
+  : "/api";
 
 export async function api(path, { method = "GET", body, revalidate } = {}) {
   const res = await fetch(`${BASE}${path}`, {

@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const API_ORIGIN = process.env.API_ORIGIN || "http://localhost:5000";
+const API_ORIGIN = process.env.API_ORIGIN || "https://api.sanwariyatourtravels.com";
 const isDev = process.env.NODE_ENV !== "production";
 
 // Report-Only first: payments and third-party scripts can break under a strict CSP.

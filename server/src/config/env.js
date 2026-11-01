@@ -10,5 +10,5 @@ module.exports = {
   mongoUri: process.env.MONGO_URI,
   jwtSecret: process.env.JWT_SECRET,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || "7d",
-  clientOrigins: (process.env.CLIENT_ORIGIN || "http://localhost:3000").split(",").map((s) => s.trim()).filter(Boolean),
+  clientOrigins: (process.env.CLIENT_ORIGIN || "https://sanwariyatourtravels.com").split(",").map((s) => s.trim()).filter(Boolean),
 };
